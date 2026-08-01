@@ -1,0 +1,11 @@
+# Python package versions were not embedded in the original notebook.
+# After recreating the validated analysis environment, pin exact versions from
+# `python -m pip freeze` before creating the paper release.
+celloracle
+ipykernel
+jupyterlab
+matplotlib
+numpy
+pandas
+scanpy
+seaborn

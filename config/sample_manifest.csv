@@ -1,0 +1,12 @@
+dataset,sample_id,input_directory,min_features,max_features,max_mito_percent,pca_dimensions,clustering_resolution,expected_doublet_rate,decontx_max_contamination
+BMO,Dynamic.24d,Dynamic-24d,500,8800,10,15,0.5,0.050,0.20
+BMO,Dynamic.25d.1,Dynamic-25d-1,500,8800,10,10,0.5,0.069,0.20
+BMO,Dynamic.25d.2,Dynamic-25d-2,500,8800,10,10,0.5,0.072,0.20
+BMO,Dynamic.31d,Dynamic-31d,500,8800,10,10,0.5,0.111,0.20
+BMO,Static.24d,Static-24d,500,8800,10,10,0.5,0.059,0.20
+BMO,Static.25d.1,Static-25d-1,500,8800,10,10,0.5,0.094,0.20
+BMO,Static.25d.2,Static-25d-2,500,8800,10,10,0.5,0.054,0.20
+EGRESS_BLOOD,blood.Dynamic.31d,blood-yao-31,500,8000,10,20,1.0,0.080,0.20
+EGRESS_BLOOD,blood.Dynamic2.31d,blood-yao2-31,500,9000,10,20,0.5,0.076,0.20
+EGRESS_BLOOD,blood.Static.31d,blood-ctr-31,500,9000,10,20,1.0,0.046,0.20
+EGRESS_BLOOD,blood.Static.33d,blood-ctr-33,500,9000,10,20,1.0,0.020,0.20

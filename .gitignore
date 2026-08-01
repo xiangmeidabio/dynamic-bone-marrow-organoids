@@ -1,0 +1,58 @@
+# Local source snapshot retained during repository cleanup
+_original_snapshot/
+
+# Raw, reference, and derived data
+data/raw/**
+!data/raw/.gitkeep
+data/reference/**
+!data/reference/.gitkeep
+data/processed/**
+!data/processed/.gitkeep
+
+# Generated figures, tables, and analysis objects
+results/figures/**
+!results/figures/.gitkeep
+results/tables/**
+!results/tables/.gitkeep
+results/objects/**
+!results/objects/.gitkeep
+
+# Large single-cell file formats
+*.rds
+*.RData
+*.rda
+*.h5
+*.h5ad
+*.h5seurat
+*.loom
+*.mtx
+*.mtx.gz
+*.feather
+
+# R and RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+renv/library/
+renv/staging/
+
+# Python and Jupyter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.bak
+~$*

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the manuscript and the archived software release."
+title: "Bone marrow organoid single-cell RNA-seq analysis"
+type: software
+authors:
+  - family-names: "TODO"
+    given-names: "TODO"
+    orcid: "https://orcid.org/TODO"
+repository-code: "https://github.com/TODO/TODO"
+abstract: "Analysis code for a bone marrow organoid single-cell RNA-sequencing study."
+version: "1.0.0"
+date-released: "YYYY-MM-DD"
+license: "TODO"
+preferred-citation:
+  type: article
+  title: "TODO: manuscript title"
+  authors:
+    - family-names: "TODO"
+      given-names: "TODO"
+  journal: "Nature Biomedical Engineering"
+  year: "YYYY"
+  doi: "TODO"
