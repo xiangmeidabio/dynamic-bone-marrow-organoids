@@ -239,22 +239,14 @@ Software packages and reference resources may change over time. Users should the
 
 ## Data availability
 
-The single-cell RNA-sequencing data associated with this study have been deposited in the Gene Expression Omnibus under accession:
-
-```text
-GSE286476
-```
+The single-cell RNA-sequencing data generated in this study have been deposited in the Gene Expression Omnibus and will be made publicly available upon publication of the associated article.
 
 External reference datasets should be obtained from their original repositories and used in accordance with the corresponding data-access and usage requirements.
 
-Large intermediate objects and generated analysis results are not distributed through GitHub.
+Large intermediate analysis objects and generated results are not hosted in this GitHub repository.
 
 ## Citation
 
 Please cite the associated manuscript when using or adapting the analysis code provided in this repository.
 
 The complete manuscript citation and DOI will be added upon publication.
-
-## License
-
-Licensing information will be provided upon public release.
