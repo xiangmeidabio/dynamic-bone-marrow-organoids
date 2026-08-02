@@ -18,7 +18,7 @@ The analysis is organized into numbered directories following the main computati
 │   ├── 03_reference_integration/       # Integration with bone marrow and organoid references
 │   ├── 04_projection_mapping/          # Reference projection and label transfer
 │   ├── 05_composition/                 # Cell-type composition analysis
-│   ├── 06_erythroid/                   # Erythroid maturation and trajectory analyses
+│   ├── 06_erythroid/                   # Erythroid maturation analyses
 │   ├── 07_cell_communication/          # CellChat analysis
 │   ├── 08_gene_regulatory_networks/    # pySCENIC and CellOracle analyses
 │   ├── 09_virtual_knockout/            # scTenifoldKnk analysis
