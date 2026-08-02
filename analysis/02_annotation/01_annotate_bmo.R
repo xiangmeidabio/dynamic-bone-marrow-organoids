@@ -229,31 +229,6 @@ stroma_ipsc_dot <- DotPlot(
 
 stroma_ipsc_dot
 
-FeaturePlot(Stromal, features = c("PLVAP"),
-            max.cutoff = 3, min.cutoff = 0,
-            cols = c("grey", "red"), reduction = "tsne")
-
-FeaturePlot(Stromal, features = c("CXCL12", "PDGFRA", "PDGFRB", "NGFR"),
-            max.cutoff = 3, min.cutoff = 0,
-            cols = c("grey", "red"), reduction = "tsne")
-
-FeaturePlot(Stromal, features = c("NES", "ACTA2", "DES", "THY1"),
-            max.cutoff = 3, min.cutoff = 0,
-            cols = c("grey", "red"), reduction = "tsne")
-
-FeaturePlot(Stromal, features = c("COL1A1", "RUNX2", "POSTN", "DCN"),
-            max.cutoff = 3, min.cutoff = 0,
-            cols = c("grey", "red"), reduction = "tsne")
-
-FeaturePlot(Stromal, features = c("CALCR", "SPP1", "RBPJ", "TNFRSF11A"),
-            max.cutoff = 3, min.cutoff = 0,
-            cols = c("grey", "red"), reduction = "tsne")
-
-FeaturePlot(Stromal, features = c("LPL"),
-            max.cutoff = 3, min.cutoff = 0,
-            cols = c("grey", "red"), reduction = "tsne")
-
-
 # ---------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------
 Haematopoietic = scRNA_all[,scRNA_all@meta.data$seurat_clusters %in% c(18,22,17,10,11,13,8,15,9,16)]
@@ -293,15 +268,17 @@ DimPlot(Haematopoietic, reduction = "umap", label = TRUE) + ggtitle("UMAP")
 #rm(scRNA_all)
 #gc()
 
-all_haem_markers <- c("CD34", "MECOM",   #HSC
-                      "TFRC","GYPA","SLC4A1","KLF1", #Erythroid
-                      "ITGA2B",
-                      "EPX",
-                      "MPO", "ELANE", #Neutrophil
-                      "TPSAB1", "KIT",  # Mast
-                      "S100A8", "S100A9", "CSF3R", # Monocyte
-                      "CD14", "CD68", "CD163",  #Macrophage
-                      "HLA-DPA1","CD1C","CLEC10A") # DCs
+hematopoietic_markers <- c(
+  "CD34", "ITGA6", "ATXN1",          # HSC
+  "PPBP", "PF4", "GP9",              # Megakaryocyte
+  "TFRC", "GYPA", "SLC4A1", "KLF1", "ALAS2",   # Erythroid
+  "MPO", "ELANE", "CSF3R",          # Neutrophil
+  "EPX",                              # Eosinophil
+  "FCER1A",                           # Basophil
+  "TPSAB1", "KIT", "TPSB2",          # Mast
+  "S100A8", "S100A9", "CSF3R",       # Monocyte
+  "CD14", "CD68", "CD163"            # Macrophage
+)
 
 
 haem_ipsc_dot <- DotPlot(
@@ -340,47 +317,6 @@ haem_ipsc_dot <- DotPlot(
 
 haem_ipsc_dot
 
-# Erythroid
-FeaturePlot(Haematopoietic, features = c("TFRC","GYPA","SLC4A1","KLF1"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# Neutrophil
-FeaturePlot(Haematopoietic, features = c("ELANE"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# DC
-FeaturePlot(Haematopoietic, features = c("HLA-DPA1","CD1C","CLEC10A"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# Macrophage
-FeaturePlot(Haematopoietic, features = c("CD14","CD68","CD163"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# Mast
-FeaturePlot(Haematopoietic, features = c("TPSAB1"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# Basophil
-FeaturePlot(Haematopoietic, features = c("FCER1A"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# Eosinophil
-FeaturePlot(Haematopoietic, features = c("EPX"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# Neutrophil
-FeaturePlot(Haematopoietic, features = c("MPO", "ELANE"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# MK
-FeaturePlot(Haematopoietic, features = c("PPBP","PF4"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-# HSC/MPP
-FeaturePlot(Haematopoietic, features = c("CD34","THY1","ITGA6"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "umap")
-
-
 Haematopoietic <- RenameIdents(Haematopoietic,
                     `17`="HSC",
 
@@ -409,7 +345,6 @@ DimPlot(Haematopoietic, label = TRUE)
 
 saveRDS(Haematopoietic, file = file.path(project_root, "data", "processed", "Haematopoietic.rds"))
 Haematopoietic <- readRDS(file.path(project_root, "data", "processed", "Haematopoietic.rds"))
-
 
 # ---------------------------------------------------------------------------------
 # ---------------------------------------------------------------------------------
@@ -471,13 +406,13 @@ print(haem_perfect_final)
 # ---------------------------------------------------------------------------------
 Haematopoietic@meta.data$group <- ""
 table(Haematopoietic@meta.data$orig.ident)
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.24d")] <- "Dynamic.24d"
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.1")] <- "Dynamic.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.1")] <- "Dynamic.24d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.2")] <- "Dynamic.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.3")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.31d")] <- "Dynamic.31d"
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.24d")] <- "Static.24d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.1")] <- "Static.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.2")] <- "Static.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.3")] <- "Static.25d"
 
 table(Haematopoietic@meta.data$group)
 # Figure 1C - Bar chart showing the counts of each lineage assayed
@@ -563,13 +498,13 @@ Haematopoietic <- readRDS(file.path(project_root, "data", "processed", "Haematop
 
 Haematopoietic@meta.data$group <- ""
 table(Haematopoietic@meta.data$orig.ident)
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.24d")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.1")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.2")] <- "Dynamic.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.3")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.31d")] <- "Dynamic.31d"
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.24d")] <- "Static.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.1")] <- "Static.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.2")] <- "Static.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.3")] <- "Static.25d"
 
 table(Haematopoietic@meta.data$group)
 
@@ -772,13 +707,13 @@ Stromal <- readRDS(file.path(project_root, "data", "processed", "Stromal.rds"))
 
 Stromal@meta.data$group <- ""
 table(Stromal@meta.data$orig.ident)
-Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Dynamic.24d")] <- "Dynamic.25d"
 Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Dynamic.25d.1")] <- "Dynamic.25d"
 Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Dynamic.25d.2")] <- "Dynamic.25d"
+Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Dynamic.25d.3")] <- "Dynamic.25d"
 Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Dynamic.31d")] <- "Dynamic.31d"
-Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Static.24d")] <- "Static.25d"
 Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Static.25d.1")] <- "Static.25d"
 Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Static.25d.2")] <- "Static.25d"
+Stromal@meta.data$group[Stromal@meta.data$orig.ident %in% c("Static.25d.3")] <- "Static.25d"
 table(Stromal@meta.data$group)
 
 Stromal@meta.data$celltype <- ""
