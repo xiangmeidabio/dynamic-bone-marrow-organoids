@@ -25,8 +25,8 @@ library(devtools)
 library(Seurat)
 library(cowplot)
 library(ggplot2)
-  library(Matrix)
-  library(openxlsx)
+library(Matrix)
+library(openxlsx)
 library(dplyr)
 library(tradeSeq)
 library(RColorBrewer)
@@ -38,8 +38,7 @@ custom_cols <- c(
 
   "Megakaryocyte"    = "#FFD92F",
 
-  "Early Erythroid"  = "#FB9A99",
-  "Late Erythroid"   = "#E41A1C",
+  "Erythroid"   = "#E41A1C",
 
   "Neutrophil"       = "#1F78B4",
   "Eosinophil"       = "#A6CEE3",
