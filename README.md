@@ -22,8 +22,4 @@ The scripts are organized according to the analysis workflow. Key analytical par
 │   ├── 07_cell_communication/        # CellChat analysis
 │   ├── 08_gene_regulatory_networks/  # pySCENIC and CellOracle analyses
 │   └── 09_virtual_knockout/          # scTenifoldKnk analysis
-├── config/                           # Sample information and analysis parameters
-├── data/                             # Local data organization
-├── docs/                             # Workflow and reproducibility documentation
-├── environment/                      # R and Python environment information
-└── results/                          # Generated figures, tables, and analysis objects
+└── environment/                      # R and Python environment information
