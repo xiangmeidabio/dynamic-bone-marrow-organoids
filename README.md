@@ -4,8 +4,6 @@ This repository contains the analysis code for a bone marrow organoid (BMO) sing
 
 The repository is organized for transparent review and computational reproduction. Analysis decisions such as thresholds, principal-component ranges, clustering resolutions, cluster-to-cell-type mappings, and target genes remain visible in the numbered scripts. Small helper functions are used only where an algorithm must be applied identically to multiple samples.
 
-> Publication status: replace the manuscript, author, data-accession, license, and citation placeholders described in `docs/reproducibility_checklist.md` before making the repository public or citing it in a manuscript.
-
 ## Repository structure
 
 ```text
