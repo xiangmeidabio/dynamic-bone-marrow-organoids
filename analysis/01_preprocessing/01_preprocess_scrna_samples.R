@@ -15,7 +15,6 @@
 #   Rscript analysis/01_preprocessing/01_preprocess_scrna_samples.R BMO
 #   Rscript analysis/01_preprocessing/01_preprocess_scrna_samples.R EGRESS_BLOOD
 
-set.seed(20260730)
 
 suppressPackageStartupMessages({
   library(celda)
