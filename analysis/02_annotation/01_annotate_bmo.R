@@ -169,76 +169,23 @@ DimPlot(Stromal, reduction = "tsne", label = TRUE) + ggtitle("t-SNE")
 DimPlot(Stromal, reduction = "tsne", label = TRUE,group.by = "seurat_clusters") + ggtitle("t-SNE")
 
 all_stromal_markers <- c(
-  "CDH5",
-  "CD34",
-  "PECAM1",
-  "ICAM2",
-  "KITLG",
-  "EMCN",
-  "FLT1",
-
-  "SOX9",
-  "HAPLN1",
-  "CCN1",
-  "COL2A1",
-
-  "EPCAM",
-  "KRT8",
-  "CDH1",
-  "CLDN7",
-
-  #VSMC
-  "TAGLN",
-
-  "ACTA2",
-  "DES",
-
-  "PDGFRB",
-  "ANGPT1",
-  "MCAM",
-  "RGS5",
-
-  "COL4A1",
-  "NGFR",
-  "CSPG4",
-  "LEPR",
-  "CXCL12",
-  "NCAM1",
-  "APOD",
-
-
-  "DCN",
-  "THY1",
-  "PDGFRA",
-  "PDGFRB",
-  "COL1A1",
-  "ASPN",
-  "VIM",
-
-  "RUNX2",
-
-  "LPL",
-  "APOE",
-  "FABP4",
-
-  "RBPJ",
-  "POSTN",
-  "NFATC1",
-  "SPP1",
-  "HSPA8",
-  "ALPL",
-
-  "VCAM1",
-  "CALCR",
-  "RANK",
-  "CTR",
-  "MMP9",
-  "PTPRC",
-  "CD14",
-
-  "VDR",
-  "CTSK",
-  "TNFRSF11A"
+  "CDH5", "CD34", "PECAM1", "ICAM2", "EMCN", "FLT1", "KITLG",   # Endothelial
+  
+  "PDGFRA", "PDGFRB", "NGFR", "ENG", "COL3A1", "NES",
+  "CXCL12", "LEPR", "VCAM1", "THY1",                         # MSC
+  
+  "AEBP1", "THY1", "RUNX2",                                    # Osteochondral progenitor
+  
+  "CSPG4", "HAPLN1", "SOX9", "COL2A1",                         # Chondrocyte
+  
+  "NDNF", "LIMCH1", "TNC",                                     # Osteoblast progenitor
+  
+  "DCN", "CPE", "ALPL", "SPP1",                                # Osteoblast
+  
+  "LPL", "APOE", "FABP4",                                      # Adipocyte progenitor
+  
+  "ANGPT1", "RGS5", "MCAM", "CSPG4", "PDGFRB",
+  "ACTA2", "TAGLN", "DES"                                     # Pericyte
 )
 
 #keep only unique ones
