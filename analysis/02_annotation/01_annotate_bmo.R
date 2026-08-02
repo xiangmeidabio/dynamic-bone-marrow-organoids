@@ -29,13 +29,13 @@ library(patchwork)
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 sample_files <- c(
-  "Dynamic.24d" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.24d", "03_post_decontx.rds"),
-  "Dynamic.25d.1" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.25d.1", "03_post_decontx.rds"),
-  "Dynamic.25d.2" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.25d.2", "03_post_decontx.rds"),
+  "Dynamic.25d.1" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.24d", "03_post_decontx.rds"),
+  "Dynamic.25d.2" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.25d.1", "03_post_decontx.rds"),
+  "Dynamic.25d.3" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.25d.2", "03_post_decontx.rds"),
   "Dynamic.31d" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Dynamic.31d", "03_post_decontx.rds"),
-  "Static.24d" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Static.24d", "03_post_decontx.rds"),
-  "Static.25d.1" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Static.25d.1", "03_post_decontx.rds"),
-  "Static.25d.2" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Static.25d.2", "03_post_decontx.rds")
+  "Static.25d.1" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Static.24d", "03_post_decontx.rds"),
+  "Static.25d.2" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Static.25d.1", "03_post_decontx.rds"),
+  "Static.25d.3" = file.path(project_root, "data", "processed", "preprocessing", "BMO", "Static.25d.2", "03_post_decontx.rds")
 )
 
 missing_sample_files <- sample_files[!file.exists(sample_files)]
