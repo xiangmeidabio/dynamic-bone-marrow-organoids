@@ -12,7 +12,6 @@
 #   4. add dynamic/static group labels; and
 #   5. export the annotated object, marker plot, and composition table.
 
-set.seed(20260730)
 project_root <- normalizePath(Sys.getenv("BMO_PROJECT_ROOT", unset = "."), winslash = "/", mustWork = TRUE)
 dir.create(file.path(project_root, "data", "processed"), recursive = TRUE, showWarnings = FALSE)
 dir.create(file.path(project_root, "results", "figures"), recursive = TRUE, showWarnings = FALSE)
@@ -165,15 +164,13 @@ FeaturePlot(scRNA_all, features = c("NCAM1","FCGR3A","KIR3DL1","KLRC1"), max.cut
 scRNA_all <- RenameIdents(scRNA_all,
                     `33`="HSC",
 
-                    `0`="Late Erythroid", `1`="Late Erythroid", `2`="Late Erythroid", `28`="Late Erythroid",
-                    `31`="Late Erythroid", `23`="Late Erythroid", `8`="Late Erythroid", `7`="Late Erythroid",
-                    `6`="Late Erythroid", `15`="Late Erythroid", `10`="Late Erythroid", `16`="Late Erythroid",
-                    `20`="Late Erythroid", `30`="Late Erythroid", `13`="Late Erythroid", `4`="Late Erythroid",
-                    `22`="Late Erythroid", `25`="Late Erythroid", `12`="Late Erythroid", `11`="Late Erythroid",
-                    `26`="Late Erythroid", `32`="Late Erythroid", `19`="Late Erythroid", `9`="Late Erythroid",
-                    `14`="Late Erythroid",
-
-                    `17`="Early Erythroid",
+                    `0`="Erythroid", `1`="Erythroid", `2`="Erythroid", `28`="Erythroid",
+                    `31`="Erythroid", `23`="Erythroid", `8`="Erythroid", `7`="Erythroid",
+                    `6`="Erythroid", `15`="Erythroid", `10`="Erythroid", `16`="Erythroid",
+                    `20`="Erythroid", `30`="Erythroid", `13`="Erythroid", `4`="Erythroid",
+                    `22`="Erythroid", `25`="Erythroid", `12`="Erythroid", `11`="Erythroid",
+                    `26`="Erythroid", `32`="Erythroid", `19`="Erythroid", `9`="Erythroid",
+                    `14`="Erythroid", `17`="Erythroid",
 
                     `34`="Megakaryocyte", `18`="Megakaryocyte", `38`="Megakaryocyte",
 
@@ -196,8 +193,7 @@ head(scRNA_all@meta.data)
 
 levels_order <- c(
   "HSC",
-  "Early Erythroid",
-  "Late Erythroid",
+  "Erythroid",
   "Megakaryocyte",
   "Monocyte",
   "Macrophage",
@@ -256,8 +252,7 @@ custom_cols <- c(
 
   "Megakaryocyte"    = "#FFD92F",
 
-  "Early Erythroid"  = "#FB9A99",
-  "Late Erythroid"   = "#E41A1C",
+  "Erythroid"   = "#E41A1C",
 
   "Neutrophil"       = "#1F78B4",
   "Eosinophil"       = "#A6CEE3",
@@ -270,7 +265,7 @@ custom_cols <- c(
   "DC"               = "#CAB2D6"
 )
 
-levels_order <- c("HSC", "Megakaryocyte", "Early Erythroid", "Late Erythroid",
+levels_order <- c("HSC", "Megakaryocyte", "Erythroid",
                   "Neutrophil", "Eosinophil", "Basophil", "Mast",
                   "Monocyte", "Macrophage", "DC")
 
@@ -313,29 +308,11 @@ DimPlot(BMO_egress_Blood,
         pt.size = 0.8) +
   theme(aspect.ratio = 1)
 
-lineage_order <- c("HSC", "Megakaryocyte", "Early Erythroid", "Late Erythroid",
+lineage_order <- c("HSC", "Megakaryocyte", "Erythroid",
                   "Neutrophil", "Eosinophil", "Basophil", "Mast",
                   "Monocyte", "Macrophage", "DC")
 
 BMO_egress_Blood$celltype <- factor(BMO_egress_Blood$celltype, levels = lineage_order)
-
-custom_cols <- c(
-  "HSC"              = "#555555",
-  "Megakaryocyte"    = "#FFD92F",
-  "Early Erythroid"  = "#FB9A99",
-  "Late Erythroid"   = "#E41A1C",
-  "Neutrophil"       = "#1F78B4",
-  "Eosinophil"       = "#A6CEE3",
-  "Basophil"         = "#33A02C",
-  "Mast"             = "#B2DF8A",
-  "Monocyte"         = "#FDBF6F",
-  "Macrophage"       = "#B15928",
-  "DC"               = "#CAB2D6"
-)
-
-DimPlot(BMO_egress_Blood, reduction = "umap", group.by = "celltype",
-        label = TRUE, repel = TRUE, cols = custom_cols) +
-  theme(aspect.ratio = 1)
 
 base_data <- BMO_egress_Blood@meta.data %>%
   dplyr::filter(group != "") %>%
