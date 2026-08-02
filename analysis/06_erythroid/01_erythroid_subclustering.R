@@ -12,7 +12,6 @@
 #   4. extract, integrate, and recluster BMO erythroid cells; and
 #   5. save both erythroid objects for downstream comparisons.
 
-set.seed(20260730)
 project_root <- normalizePath(Sys.getenv("BMO_PROJECT_ROOT", unset = "."), winslash = "/", mustWork = TRUE)
 dir.create(file.path(project_root, "data", "processed"), recursive = TRUE, showWarnings = FALSE)
 dir.create(file.path(project_root, "results", "figures"), recursive = TRUE, showWarnings = FALSE)
@@ -38,7 +37,7 @@ BMO_egress_Blood <- readRDS(
 DimPlot(BMO_egress_Blood, label = TRUE)
 
 table(BMO_egress_Blood@meta.data$celltype)
-Blood_Erythroid <- subset(BMO_egress_Blood, subset = celltype %in% c("Early Erythroid", "Late Erythroid"))
+Blood_Erythroid <- subset(BMO_egress_Blood, subset = celltype %in% c("Erythroid"))
 
 DimPlot(Blood_Erythroid, reduction = "umap", group.by = "celltype", label = TRUE)
 
@@ -86,9 +85,6 @@ FeaturePlot(Blood_Erythroid, features = c("TFRC","GYPA","SLC4A1","KLF1"), max.cu
 FeaturePlot(Blood_Erythroid, features = c("PTPRC"), max.cutoff = 3, min.cutoff=0,
             cols = c("grey","red"), reduction = "umap")
 
-FeaturePlot(Blood_Erythroid, features = c("PTPRC"), max.cutoff = 3, min.cutoff=0,
-            cols = c("grey","red"), reduction = "tsne")
-
 saveRDS(Blood_Erythroid, file = file.path(project_root, "data", "processed", "Blood_Erythroid.rds"))
 Blood_Erythroid <- readRDS(file.path(project_root, "data", "processed", "Blood_Erythroid.rds"))
 
@@ -108,13 +104,13 @@ Haematopoietic <- readRDS(file.path(project_root, "data", "processed", "Haematop
 
 Haematopoietic@meta.data$group <- ""
 table(Haematopoietic@meta.data$orig.ident)
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.24d")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.1")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.2")] <- "Dynamic.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.25d.3")] <- "Dynamic.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Dynamic.31d")] <- "Dynamic.31d"
-Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.24d")] <- "Static.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.1")] <- "Static.25d"
 Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.2")] <- "Static.25d"
+Haematopoietic@meta.data$group[Haematopoietic@meta.data$orig.ident %in% c("Static.25d.3")] <- "Static.25d"
 
 table(Haematopoietic@meta.data$group)
 
