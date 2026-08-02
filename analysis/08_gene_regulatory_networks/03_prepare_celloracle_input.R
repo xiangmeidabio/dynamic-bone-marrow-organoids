@@ -11,7 +11,6 @@
 #   3. inspect stage and condition composition; and
 #   4. export counts, normalized data, metadata, and embeddings to H5AD.
 
-set.seed(20260730)
 project_root <- normalizePath(Sys.getenv("BMO_PROJECT_ROOT", unset = "."), winslash = "/", mustWork = TRUE)
 dir.create(file.path(project_root, "data", "processed"), recursive = TRUE, showWarnings = FALSE)
 dir.create(file.path(project_root, "results", "figures"), recursive = TRUE, showWarnings = FALSE)
