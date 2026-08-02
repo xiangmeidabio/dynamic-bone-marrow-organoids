@@ -52,7 +52,7 @@ custom_cols <- c(
   "DC"               = "#CAB2D6"
 )
 
-levels_order <- c("HSC", "Megakaryocyte", "Early Erythroid", "Late Erythroid",
+levels_order <- c("HSC", "Megakaryocyte", "Erythroid",
                   "Neutrophil", "Eosinophil", "Basophil", "Mast",
                   "Monocyte", "Macrophage", "DC")
 
